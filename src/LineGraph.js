@@ -61,6 +61,8 @@ const buildChartData = (data,casesType='cases')=>{
     };
     return chartData
 }
+
+
 function LineGraph({casesType='cases'}) {
     
     const [data, setData] = useState({})
@@ -77,22 +79,24 @@ function LineGraph({casesType='cases'}) {
             })
         }
       fetchData();
-    }, [])
+    }, [casesType])
 
     
     return (
         <div>
-            <Line 
-            options={options}
-            data={{
-                datasets:[
-                    {
-                        backgroundColor:'rgba(240,16,52,0)',
-                        borderColor:'#cc1034',
-                        data:data,
-                    }
-                ]
-            }}/>
+            {data?.length>0&&(
+                <Line 
+                options={options}
+                data={{
+                    datasets:[
+                        {
+                            backgroundColor:'rgba(240,16,52,0.5)',
+                            borderColor:'#cc1034',
+                            data:data,
+                        }
+                    ]
+                }}/>
+            )}
         </div>
     )
 }
