@@ -23,7 +23,7 @@ const App = () => {
   const [tableData, setTableData] = useState([]);
   const [casesType, setCasesType] = useState("cases");
   const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
-  const [mapZoom, setMapZoom] = useState(3);
+  const [mapZoom, setMapZoom] = useState(2);
 
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
@@ -72,7 +72,8 @@ const App = () => {
   };
 
   return (
-    <div className="app">
+    <div>
+      <div className="app">
       <div className="app__left">
         <div className="app__header">
           <h1>COVID-19 Tracker</h1>
@@ -92,7 +93,7 @@ const App = () => {
         <div className="app__stats">
           <InfoBox
             onClick={(e) => setCasesType("cases")}
-            title="Coronavirus Cases"
+            title="Active Cases"
             isRed
             active={casesType === "cases"}
             cases={prettyPrintStat(countryInfo.todayCases)}
@@ -114,12 +115,12 @@ const App = () => {
             total={numeral(countryInfo.deaths).format("0.0a")}
           />
         </div>
-        <Map
-          countries={mapCountries}
-          casesType={casesType}
-          center={mapCenter}
-          zoom={mapZoom}
-        />
+          <Map
+            countries={mapCountries}
+            casesType={casesType}
+            center={mapCenter}
+            zoom={mapZoom}
+          />
       </div>
       <Card className="app__right">
         <CardContent>
@@ -132,6 +133,11 @@ const App = () => {
         </CardContent>
       </Card>
     </div>
+    <div className="footer">
+      <p>&copy; All credit goes to DevBuild - Copyright 2020.Design by <a title="Styleshout" href="http://https://devbuild-93017.web.app//">Devbuild</a></p>
+    </div>
+    </div>
+    
   );
 };
 

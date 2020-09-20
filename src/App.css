@@ -45,6 +45,9 @@ body{
   margin-top: 20px;
   margin-bottom: 20px;
 }
+.footer{
+  text-align: center;
+}
 @media (max-width:990px){
   .app{
     flex-direction: column;
