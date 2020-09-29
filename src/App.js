@@ -26,10 +26,10 @@ const App = () => {
   const [mapZoom, setMapZoom] = useState(2);
 
   useEffect(() => {
-    fetch("https://disease.sh/v3/covid-19/all")
+    fetch("http://localhost:8888/photos/list")
       .then((response) => response.json())
       .then((data) => {
-        setCountryInfo(data);
+        console.log({data})
       });
   }, []);
 
